@@ -22,25 +22,58 @@ function newNonPlayableCharacter(x, y) {
     }
 
     setInterval(moveCharacter, 1)
-
-    function walkEast() {
+// alot of changes done here
+// added a stop() to have the npc stop moving
+// changed from a hard-code of 500ms to receive
+// an argument "time" from npc.walkEast() located
+// in index.js.
+// using callback() to allow the npc to 
+// perform a different movement when npc
+// is done with walkEast. It is wrapped in
+// an if statement.
+// making these changes to other walk functions
+    function walkEast(time, callback) {
         direction = 'east'
         element.src = `./assets/red-character/east.gif`
+        setTimeout ( () => {
+            stop()
+            if(callback) {
+                callback ()
+            }
+        }, time)
     }
 
-    function walkNorth() {
+    function walkNorth(time, callback) {
         direction = 'north'
         element.src = `./assets/red-character/north.gif`
+        setTimeout ( () => {
+            stop()
+            if(callback) {
+                callback ()
+            }
+        }, time)
     }
 
-    function walkWest() {
+    function walkWest(time, callback) {
         direction = 'west'
         element.src = `./assets/red-character/west.gif`
+        setTimeout ( () => {
+            stop()
+            if(callback) {
+                callback ()
+            }
+        }, time)
     }
 
-    function walkSouth() {
+    function walkSouth(time, callback) {
         direction = 'south'
         element.src = `./assets/red-character/south.gif`
+        setTimeout ( () => {
+            stop()
+            if(callback) {
+                callback ()
+            }
+        }, time)
     }
 
     function stop() {
